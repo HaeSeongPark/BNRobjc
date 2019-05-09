@@ -7,8 +7,40 @@
 //
 
 #import "BRNEmployee.h"
+#import "BNRAsset.h"
 
 @implementation BRNEmployee
+
+//Accessors for asstes properties
+
+- (void)setAssets:(NSArray *)assets {
+    _assets = [assets mutableCopy];
+}
+
+- (NSArray *)assets {
+    return [_assets copy];
+}
+
+- (void)addAsset:(BNRAsset *)a {
+    if(!_assets) {
+        _assets = [NSMutableArray new];
+    }
+    [_assets addObject:a];
+}
+
+- (BNRAsset *)removeAssetAtIndex:(NSUInteger)index {
+    BNRAsset *assetToRemove = [_assets objectAtIndex:index];
+    [_assets removeObjectAtIndex:index];
+    return assetToRemove;
+}
+
+- (unsigned int)valueOfAsstes {
+    unsigned int sum = 0;
+    for(BNRAsset *a in _assets) {
+        sum += [a resaleValue];
+    }
+    return sum;
+}
 
 -(double)yearsOfEmployment {
     if(self.hireDate) {
@@ -27,7 +59,13 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"<Employee %d>", self.employeeID];
+    return [NSString stringWithFormat:@"<Employee %u: $%u in assets>",
+            self.employeeID, self.valueOfAsstes];
+}
+
+- (void)dealloc
+{
+    NSLog(@"deallcation %@", self);
 }
 
 @end

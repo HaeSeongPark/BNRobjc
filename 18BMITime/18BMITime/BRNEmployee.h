@@ -7,14 +7,26 @@
 //
 
 #import "BNRPerson.h"
+@class BNRAsset;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BRNEmployee : BNRPerson
+@interface BRNEmployee : BNRPerson {
+    NSMutableArray *_assets;
+}
 
 @property (nonatomic) unsigned int employeeID;
 @property (nonatomic) unsigned int officeAlarmCode;
 @property (nonatomic) NSDate *hireDate;
+@property (nonatomic) NSString *lastName;
+@property (nonatomic) BNRPerson *spouse;
+@property (nonatomic) NSMutableArray *children;
+
+@property (nonatomic, copy) NSArray *assets;
+-(void)addAsset:(BNRAsset *)a;
+-(BNRAsset*)removeAssetAtIndex:(NSUInteger)index;
+-(unsigned int)valueOfAsstes;
+
 -(double)yearsOfEmployment;
 
 @end

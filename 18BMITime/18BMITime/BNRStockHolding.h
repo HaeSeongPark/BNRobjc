@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) float purchaseSharePrice;
 @property (nonatomic) float currentSharePrice;
 @property (nonatomic) int numberOfShares;
+@property (nonatomic, copy) NSString *symbol;
 
 -(float)costInDollars; // purchaseSharePrice * numberOfShares
 -(float)valueInDollars; // currentShareprice * numberOfShares
