@@ -17,7 +17,8 @@
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
 //        // Create an instance of BNRPerson
-//        BRNEmployee *mikey = [[BRNEmployee alloc] init];
+        BRNEmployee *mikey = [[BRNEmployee alloc] init];
+//        unsigned int mikeysCode = mikey.officeAlarmCode;
 //
 //        // Give the instance variables interesting values using setters
 ////        [mikey setWeightInKilos:96];

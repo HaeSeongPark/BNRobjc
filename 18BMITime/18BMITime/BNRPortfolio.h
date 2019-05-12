@@ -11,13 +11,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BNRPortfolio : NSObject {
-    NSMutableArray *_holdings;
-}
+@interface BNRPortfolio : NSObject
 
 @property (nonatomic, copy) NSArray *holdings;
 -(float)totalValue;
 -(void)addHlding:(BNRStockHolding *)holding;
+-(void)removeHolding:(unsigned int)index;
 @end
 
 NS_ASSUME_NONNULL_END

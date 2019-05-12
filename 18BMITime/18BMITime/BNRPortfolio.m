@@ -7,6 +7,12 @@
 //
 
 #import "BNRPortfolio.h"
+@interface BNRPortfolio()
+{
+    NSMutableArray *_holdings;
+}
+
+@end
 
 @implementation BNRPortfolio
 
@@ -23,6 +29,10 @@
         _holdings = [NSMutableArray new];
     }
     [_holdings addObject:holding];
+}
+
+- (void)removeHolding:(unsigned int)index {
+    [_holdings removeObjectAtIndex:index];
 }
 
 //- (unsigned int)valueOfAsstes {
