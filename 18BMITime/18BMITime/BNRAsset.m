@@ -7,12 +7,17 @@
 //
 
 #import "BNRAsset.h"
+#import "BRNEmployee.h"
 
 @implementation BNRAsset
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"<%@: $%u>", self.label, self.resaleValue];
+    if (_holder) {
+        return [NSString stringWithFormat:@"<%@: $%d, assigned to %@>", _label, _resaleValue, _holder];
+    } else {
+        return [NSString stringWithFormat:@"<%@: $%d unassigned>", _label, _resaleValue];
+    }
 }
 
 - (void)dealloc

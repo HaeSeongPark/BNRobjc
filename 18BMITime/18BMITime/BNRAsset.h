@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+@class BRNEmployee;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -14,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) NSString *label;
 @property (nonatomic) unsigned int resaleValue;
+
+@property (nonatomic, weak) BRNEmployee *holder;
 
 @end
 

@@ -100,6 +100,8 @@ int main(int argc, const char * argv[]) {
             [employees addObject:mikey];
         }
         
+        NSMutableArray *allAssets = [NSMutableArray new];
+        
         for(int i=0; i<10; i++) {
             BNRAsset *asset = [BNRAsset new];
             
@@ -113,18 +115,24 @@ int main(int argc, const char * argv[]) {
             BRNEmployee *randomEmployee = [employees objectAtIndex:randomIndex];
             
             [randomEmployee addAsset:asset];
+            
+            [allAssets addObject:asset];
         }
         
-        // challenge 2 test
-        NSLog(@"Employees: %@", [[employees objectAtIndex:0] assets]);
-        [[employees objectAtIndex:0] removeAssetAtIndex:0];
-        NSLog(@"Employees: %@", [[employees objectAtIndex:0] assets]);
+        // ch21 challenge 2 test
+//        NSLog(@"Employees: %@", [[employees objectAtIndex:0] assets]);
+//        [[employees objectAtIndex:0] removeAssetAtIndex:0];
+//        NSLog(@"Employees: %@", [[employees objectAtIndex:0] assets]);
         
-//        NSLog(@"Employees: %@", employees);
-//        NSLog(@"Giving up ownership of one employee");
-//        [employees removeObjectAtIndex:5];
-//        NSLog(@"Giving up ownership of arrays");
-//        employees = nil;
+        NSLog(@"Employees: %@", employees);
+        NSLog(@"Giving up ownership of one employee");
+        [employees removeObjectAtIndex:5];
+        NSLog(@"allAssets: %@", allAssets);
+        NSLog(@"Giving up ownership of arrays");
+        
+        allAssets = nil;
+        employees = nil;
     }
+    sleep(100);
     return 0;
 }

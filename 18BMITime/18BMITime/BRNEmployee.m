@@ -35,6 +35,7 @@
         _assets = [NSMutableArray new];
     }
     [_assets addObject:a];
+    a.holder = self;
 }
 
 - (BNRAsset *)removeAssetAtIndex:(NSUInteger)index {
