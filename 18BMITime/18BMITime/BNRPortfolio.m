@@ -51,4 +51,17 @@
     return result;
 }
 
+- (NSArray *)topThreeOfHoldings {
+    NSSortDescriptor *valueInDollars = [NSSortDescriptor sortDescriptorWithKey:@"valueInDollars" ascending:NO];
+    [_holdings sortUsingDescriptors:@[valueInDollars]];
+    NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, 3)];
+    return [_holdings objectsAtIndexes:indexSet];
+}
+
+- (NSArray *)sortedBySymbolUsingAlphabetically {
+        NSSortDescriptor *symbol = [NSSortDescriptor sortDescriptorWithKey:@"symbol" ascending:YES];
+    [_holdings sortUsingDescriptors:@[symbol]];
+    return [self holdings];
+}
+
 @end

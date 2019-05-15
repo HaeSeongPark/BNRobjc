@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 -(float)totalValue;
 -(void)addHlding:(BNRStockHolding *)holding;
 -(void)removeHolding:(unsigned int)index;
+-(NSArray *)topThreeOfHoldings;
+-(NSArray *)sortedBySymbolUsingAlphabetically;
 @end
 
 NS_ASSUME_NONNULL_END

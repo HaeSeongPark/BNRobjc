@@ -18,4 +18,9 @@
     return _currentSharePrice * _numberOfShares;
 }
 
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"%f %@", [self valueInDollars], _symbol];
+}
+
 @end

@@ -11,7 +11,7 @@
 
 @interface BRNEmployee()
 {
-    NSMutableArray *_assets;
+    NSMutableSet *_assets;
 }
 
 @property (nonatomic) unsigned int officeAlarmCode;
@@ -32,19 +32,19 @@
 
 - (void)addAsset:(BNRAsset *)a {
     if(!_assets) {
-        _assets = [NSMutableArray new];
+        _assets = [NSMutableSet new];
     }
     [_assets addObject:a];
     a.holder = self;
 }
 
-- (BNRAsset *)removeAssetAtIndex:(NSUInteger)index {
-    BNRAsset *assetToRemove = [_assets objectAtIndex:index];
-    [_assets removeObjectAtIndex:index];
-    return assetToRemove;
-}
+//- (BNRAsset *)removeAssetAtIndex:(NSUInteger)index {
+//    BNRAsset *assetToRemove = [_assets objectAtIndex:index];
+//    [_assets removeObjectAtIndex:index];
+//    return assetToRemove;
+//}
 
-- (unsigned int)valueOfAsstes {
+- (unsigned int)valueOfAssets {
     unsigned int sum = 0;
     for(BNRAsset *a in _assets) {
         sum += [a resaleValue];
@@ -70,7 +70,7 @@
 - (NSString *)description
 {
     return [NSString stringWithFormat:@"<Employee %u: $%u in assets>",
-            self.employeeID, self.valueOfAsstes];
+            self.employeeID, self.valueOfAssets];
 }
 
 - (void)dealloc

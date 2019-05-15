@@ -74,12 +74,33 @@ int main(int argc, const char * argv[]) {
         stock3.conversionRate = 0.94;
         stock3.symbol = @"stock3";
         
+        BNRForeignStockHolding *stock4 = [BNRForeignStockHolding new];
+        stock4.purchaseSharePrice = 0.30;
+        stock4.currentSharePrice = 0.50;
+        stock4.numberOfShares = 10;
+        stock4.conversionRate = 0.24;
+        stock4.symbol = @"stock4";
+        
+        BNRForeignStockHolding *stock5 = [BNRForeignStockHolding new];
+        stock5.purchaseSharePrice = 0.30;
+        stock5.currentSharePrice = 1.50;
+        stock5.numberOfShares = 20;
+        stock5.conversionRate = 0.14;
+        stock5.symbol = @"stock5";
+        
         BNRPortfolio *p1 = [[BNRPortfolio alloc] init];
         [p1 addHlding:stock1];
         [p1 addHlding:stock2];
         [p1 addHlding:stock3];
+        [p1 addHlding:stock4];
+        [p1 addHlding:stock5];
         
         NSLog(@"totalValue : %f", [p1 totalValue]);
+        
+        NSLog(@"top three : %@", [p1 topThreeOfHoldings]);
+        
+        
+        NSLog(@"sortedBySymbolUsingAlphabetically : %@", [p1 sortedBySymbolUsingAlphabetically]);
 //
 //        [stocks addObjectsFromArray:@[stock1,stock2,stock3]];
 //
@@ -88,6 +109,10 @@ int main(int argc, const char * argv[]) {
 //        }
         
         NSMutableArray *employees = [NSMutableArray new];
+        
+        // Create a dictionary of executives
+        NSMutableDictionary *executies = [NSMutableDictionary new];
+        
         for(int i=0; i<10; i++) {
             BRNEmployee *mikey = [BRNEmployee new];
             
@@ -98,6 +123,9 @@ int main(int argc, const char * argv[]) {
             
             // Put the employee in the employees array
             [employees addObject:mikey];
+            
+            if(i==0) [executies setObject:mikey forKey:@"CEO"];
+            if(i==1) [executies setObject:mikey forKey:@"CTO"];
         }
         
         NSMutableArray *allAssets = [NSMutableArray new];
@@ -109,8 +137,8 @@ int main(int argc, const char * argv[]) {
             asset.label = currentLabel;
             asset.resaleValue = 350 + i * 17;
             
-//            NSUInteger randomIndex = random() % [employees count];
-            NSUInteger randomIndex = 0;
+            NSUInteger randomIndex = random() % [employees count];
+//            NSUInteger randomIndex = 0;
             
             BRNEmployee *randomEmployee = [employees objectAtIndex:randomIndex];
             
@@ -124,15 +152,31 @@ int main(int argc, const char * argv[]) {
 //        [[employees objectAtIndex:0] removeAssetAtIndex:0];
 //        NSLog(@"Employees: %@", [[employees objectAtIndex:0] assets]);
         
+        NSSortDescriptor *voa = [NSSortDescriptor sortDescriptorWithKey:@"valueOfAssets" ascending:YES];
+        NSSortDescriptor *eid = [NSSortDescriptor sortDescriptorWithKey:@"employeeID" ascending:YES];
+        [employees sortUsingDescriptors:@[voa, eid]];
+        
         NSLog(@"Employees: %@", employees);
         NSLog(@"Giving up ownership of one employee");
         [employees removeObjectAtIndex:5];
         NSLog(@"allAssets: %@", allAssets);
         NSLog(@"Giving up ownership of arrays");
         
+        // Print out the entire dictionary
+        NSLog(@"executives : %@", executies);
+        
+        // Print out the CEO's information
+        NSLog(@"CEO: %@", executies[@"CEO"]);
+        executies = nil;
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"holder.valueOfAssets > 500"];
+        NSArray *toBeReclaimded = [allAssets filteredArrayUsingPredicate:predicate];
+        NSLog(@"toBeReclaimed %@", toBeReclaimded);
+        toBeReclaimded = nil;
+        
         allAssets = nil;
         employees = nil;
     }
-    sleep(100);
+//    sleep(100);
     return 0;
 }

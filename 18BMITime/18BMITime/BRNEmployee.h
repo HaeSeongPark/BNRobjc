@@ -19,10 +19,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) BNRPerson *spouse;
 @property (nonatomic) NSMutableArray *children;
 
-@property (nonatomic, copy) NSArray *assets;
+@property (nonatomic, copy) NSSet *assets;
 -(void)addAsset:(BNRAsset *)a;
--(BNRAsset*)removeAssetAtIndex:(NSUInteger)index;
--(unsigned int)valueOfAsstes;
+//-(BNRAsset*)removeAssetAtIndex:(NSUInteger)index;
+-(unsigned int)valueOfAssets;
 
 -(double)yearsOfEmployment;
 
