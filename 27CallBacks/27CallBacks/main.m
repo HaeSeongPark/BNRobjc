@@ -15,6 +15,13 @@ int main(int argc, const char * argv[]) {
         
         [[NSNotificationCenter defaultCenter] addObserver:logger selector:@selector(zoneChange:) name:NSSystemTimeZoneDidChangeNotification object:nil];
         
+        // ch28 Challenge 2
+        
+        [[NSNotificationCenter defaultCenter] addObserverForName:NSSystemTimeZoneDidChangeNotification object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
+            NSLog(@"The system time zone has changed!");
+        }]
+        
+        
         NSURL *url = [NSURL URLWithString:@"http://www.gutenberg.org/cache/epub/205/pg205.txt"];
         
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
