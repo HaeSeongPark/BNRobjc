@@ -33,14 +33,14 @@ static NSString * const CellIdentifier = @"cell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setupTableView];
     
     NSArray *plist = [NSArray arrayWithContentsOfFile:BNRDocPath()];
     if(plist) {
         self.tasks = [plist mutableCopy];
-        return;
+    } else {
+        self.tasks = [NSMutableArray array];
     }
-    self.tasks = [NSMutableArray array];
+    [self setupTableView];
 }
 
 -(void)setupTableView
@@ -63,8 +63,7 @@ static NSString * const CellIdentifier = @"cell";
     
     if([text length] == 0) { return ;}
     
-//   1해결하기
-//    [self.tasks addObject:text];
+//  [self.tasks addObject:text];
     [self.arrayDataSource addItem:text];
     
     [self.taskTable reloadData];

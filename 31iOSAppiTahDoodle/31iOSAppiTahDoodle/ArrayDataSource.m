@@ -62,8 +62,6 @@
 // 3 items mutable로 바꿨는데 nsarray로 하고 mutablearray따로 두기
 - (void)addItem:(NSString *)anItem
 {
-//    self.items = anItems;
-//    self.items = [NSMutableArray array];
     [self.items addObject:anItem];
 }
 
