@@ -9,31 +9,39 @@
 #import "ArrayDataSource.h"
 
 @interface ArrayDataSource ()
+{
+    NSMutableArray *_items;
+}
 
-@property (nonatomic, strong) NSMutableArray *items;
+@property (nonatomic, strong) NSArray *items;
 @property (nonatomic, copy) NSString *cellIdentifier;
 @property (nonatomic, copy) TableViewCellConfigureBlock configureCellBlock;
 
 @end
 
-
+// 제네릭으로 만들면 좋을 듯
 @implementation ArrayDataSource
-
-//- (instancetype)init
-//{
-//    return nil;
-//}
-
-
+                     //제네릭
 - (id)initWithItems:(NSArray *)anItems cellIdentifier:(NSString *)aCellIdentifier configureCellBlock:(TableViewCellConfigureBlock)aConfigureCellBlock
 {
     self = [super init];
     if (self) {
-        self.items = anItems;
+//        self.items = [anItems mutableCopy];
+//        [self setItems:anItems];
+        [self setItems:anItems];
         self.cellIdentifier = aCellIdentifier;
         self.configureCellBlock = [aConfigureCellBlock copy];
     }
     return self;
+}
+                  //제네릭
+-(void)setItems:(NSArray*)items
+{
+    if(!items) {
+        _items = [NSMutableArray array];
+        return;
+    }
+    _items = [items mutableCopy];
 }
 
 - (id)itemAtIndexPath:(NSIndexPath *)indexPath
@@ -58,11 +66,13 @@
     return cell;
 }
 
-// 2 해당 타입만 스트링이면 스트링... 커스텀데이터모델이면 커스텀데이터모델만
-// 3 items mutable로 바꿨는데 nsarray로 하고 mutablearray따로 두기
+                 //제네릭
 - (void)addItem:(NSString *)anItem
 {
-    [self.items addObject:anItem];
+    if(!_items) {
+        _items = [NSMutableArray array];
+    }
+    [_items addObject:anItem];
 }
 
 @end

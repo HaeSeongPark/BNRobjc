@@ -4,10 +4,13 @@
 //
 //  Created by rhino Q on 22/05/2019.
 //  Copyright © 2019 rhino Q. All rights reserved.
-//
+// https://www.objc.io/issues/1-view-controllers/lighter-view-controllers/
+// ArrayDataSource 제네릭으로 만들기
+// cell configure은 클래스 확장? 프로토콜? 상속? 어떤 게 좋을까?
 
 #import "ViewController.h"
 #import "ArrayDataSource.h"
+#import "TempCell.h"
 
 NSString *BNRDocPath()
 {
@@ -17,7 +20,7 @@ NSString *BNRDocPath()
     return [pathList[0] stringByAppendingPathComponent:@"data.td"];
 }
 
-static NSString * const CellIdentifier = @"cell";
+static NSString * const CellIdentifier = @"TempCell";
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *textField;
@@ -37,20 +40,19 @@ static NSString * const CellIdentifier = @"cell";
     NSArray *plist = [NSArray arrayWithContentsOfFile:BNRDocPath()];
     if(plist) {
         self.tasks = [plist mutableCopy];
-    } else {
-        self.tasks = [NSMutableArray array];
     }
     [self setupTableView];
 }
 
 -(void)setupTableView
 {
-    TableViewCellConfigureBlock configureCell = ^(UITableViewCell *cell, NSString *text) {
-        cell.textLabel.text = text;
+    TableViewCellConfigureBlock configureCell = ^(TempCell *cell, NSString *text) {
+        [cell configure:text];
     };
     
     self.arrayDataSource = [[ArrayDataSource alloc] initWithItems:self.tasks cellIdentifier:CellIdentifier configureCellBlock:configureCell];
     self.taskTable.dataSource = self.arrayDataSource;
+    [self.taskTable registerNib:[TempCell nib] forCellReuseIdentifier:CellIdentifier];
 }
 
 - (IBAction)didButtonTapped:(UIButton *)sender {
@@ -68,8 +70,9 @@ static NSString * const CellIdentifier = @"cell";
     
     [self.taskTable reloadData];
     
-    _textField.text = @"";
     
+    // reset textField
+    _textField.text = @"";
     [_textField resignFirstResponder];
 }
 

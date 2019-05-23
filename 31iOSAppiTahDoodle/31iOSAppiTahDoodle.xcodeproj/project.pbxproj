@@ -15,6 +15,8 @@
 		97EFE78F2294ACBF00847663 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 97EFE78E2294ACBF00847663 /* main.m */; };
 		97EFE7992294ACBF00847663 /* _1iOSAppiTahDoodleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 97EFE7982294ACBF00847663 /* _1iOSAppiTahDoodleTests.m */; };
 		97EFE7A52294CF6900847663 /* ArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 97EFE7A42294CF6900847663 /* ArrayDataSource.m */; };
+		97EFE7A92296148600847663 /* TempCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 97EFE7A72296148600847663 /* TempCell.m */; };
+		97EFE7AA2296148600847663 /* TempCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97EFE7A82296148600847663 /* TempCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +45,9 @@
 		97EFE79A2294ACBF00847663 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		97EFE7A32294CF6900847663 /* ArrayDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArrayDataSource.h; sourceTree = "<group>"; };
 		97EFE7A42294CF6900847663 /* ArrayDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArrayDataSource.m; sourceTree = "<group>"; };
+		97EFE7A62296148600847663 /* TempCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TempCell.h; sourceTree = "<group>"; };
+		97EFE7A72296148600847663 /* TempCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TempCell.m; sourceTree = "<group>"; };
+		97EFE7A82296148600847663 /* TempCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TempCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +94,9 @@
 				97EFE7822294ACBD00847663 /* ViewController.h */,
 				97EFE7832294ACBD00847663 /* ViewController.m */,
 				97EFE7852294ACBD00847663 /* Main.storyboard */,
+				97EFE7A62296148600847663 /* TempCell.h */,
+				97EFE7A72296148600847663 /* TempCell.m */,
+				97EFE7A82296148600847663 /* TempCell.xib */,
 				97EFE7882294ACBF00847663 /* Assets.xcassets */,
 				97EFE78A2294ACBF00847663 /* LaunchScreen.storyboard */,
 				97EFE78D2294ACBF00847663 /* Info.plist */,
@@ -191,6 +199,7 @@
 				97EFE78C2294ACBF00847663 /* LaunchScreen.storyboard in Resources */,
 				97EFE7892294ACBF00847663 /* Assets.xcassets in Resources */,
 				97EFE7872294ACBD00847663 /* Main.storyboard in Resources */,
+				97EFE7AA2296148600847663 /* TempCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,6 +219,7 @@
 			files = (
 				97EFE7842294ACBD00847663 /* ViewController.m in Sources */,
 				97EFE78F2294ACBF00847663 /* main.m in Sources */,
+				97EFE7A92296148600847663 /* TempCell.m in Sources */,
 				97EFE7A52294CF6900847663 /* ArrayDataSource.m in Sources */,
 				97EFE7812294ACBD00847663 /* AppDelegate.m in Sources */,
 			);

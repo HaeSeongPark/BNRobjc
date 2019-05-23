@@ -13,14 +13,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 typedef void (^TableViewCellConfigureBlock)(id cell, id item);
 
-
 @interface ArrayDataSource : NSObject <UITableViewDataSource>
 
 - (id)initWithItems:(NSArray *)anItems
      cellIdentifier:(NSString *)aCellIdentifier
  configureCellBlock:(TableViewCellConfigureBlock)aConfigureCellBlock;
 
-- (id)itemAtIndexPath:(NSIndexPath *)indexPath;
+//- (id)itemAtIndexPath:(NSIndexPath *)indexPath;
 - (void)addItem:(NSString *)anItem;
 @end
 
