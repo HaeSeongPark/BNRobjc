@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "BNRLogger.h"
+#import "BNRObserver.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
@@ -19,7 +20,7 @@ int main(int argc, const char * argv[]) {
         
         [[NSNotificationCenter defaultCenter] addObserverForName:NSSystemTimeZoneDidChangeNotification object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
             NSLog(@"The system time zone has changed!");
-        }]
+        }];
         
         
         NSURL *url = [NSURL URLWithString:@"http://www.gutenberg.org/cache/epub/205/pg205.txt"];
@@ -33,6 +34,12 @@ int main(int argc, const char * argv[]) {
                                                         selector:@selector(updateLastTime:)
                                                         userInfo:nil
                                                          repeats:YES];
+        
+        __unused BNRObserver *observer = [BNRObserver new];
+        [logger addObserver:observer
+                 forKeyPath:@"lastTimeString"
+                    options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
+                    context:&contextForKVO];
         
         [[NSRunLoop currentRunLoop] run];
         
