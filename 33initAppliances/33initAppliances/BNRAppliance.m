@@ -16,6 +16,12 @@
     return [self initWithProductName:@"Unknown"];
 }
 
+- (void)setVoltage:(int)voltage
+{
+    NSLog(@"setting voltage to %d",voltage);
+    _voltage = voltage;
+}
+
 - (instancetype)initWithProductName:(NSString *)pn
 {
     
@@ -28,7 +34,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"<%@: %d volts>",self.productName, self.voltage];
+    return [NSString stringWithFormat:@"<%@: %d volts>",_productName, self.voltage];
  }
             
 @end

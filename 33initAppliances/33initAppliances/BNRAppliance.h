@@ -11,8 +11,11 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BNRAppliance : NSObject
+{
+    NSString *_productName;
+}
 
-@property (nonatomic, copy) NSString *productName;
+//@property (nonatomic, copy) NSString *productName;
 @property (nonatomic) int voltage;
 
 // The designated initializer
