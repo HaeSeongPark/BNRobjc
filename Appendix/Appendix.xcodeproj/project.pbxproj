@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		97EFE816229CBAF600847663 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 97EFE815229CBAF600847663 /* main.m */; };
+		97EFE820229E0D3A00847663 /* BNRTowel.m in Sources */ = {isa = PBXBuildFile; fileRef = 97EFE81F229E0D3A00847663 /* BNRTowel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,8 @@
 /* Begin PBXFileReference section */
 		97EFE812229CBAF600847663 /* Appendix */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Appendix; sourceTree = BUILT_PRODUCTS_DIR; };
 		97EFE815229CBAF600847663 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		97EFE81E229E0D3A00847663 /* BNRTowel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BNRTowel.h; sourceTree = "<group>"; };
+		97EFE81F229E0D3A00847663 /* BNRTowel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BNRTowel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +60,8 @@
 		97EFE814229CBAF600847663 /* Appendix */ = {
 			isa = PBXGroup;
 			children = (
+				97EFE81E229E0D3A00847663 /* BNRTowel.h */,
+				97EFE81F229E0D3A00847663 /* BNRTowel.m */,
 				97EFE815229CBAF600847663 /* main.m */,
 			);
 			path = Appendix;
@@ -118,6 +123,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97EFE820229E0D3A00847663 /* BNRTowel.m in Sources */,
 				97EFE816229CBAF600847663 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

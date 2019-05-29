@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <objc/runtime.h>
+#import "BNRTowel.h"
+//https://forums.developer.apple.com/thread/63537
+#define NSLog(FORMAT, ...) printf("%s\n", [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
 
 NSArray *BNRHierarchyForClass(Class cls)
 {
@@ -62,6 +65,12 @@ NSArray *BNRInstancesVariableForClass(Class cls)
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
+        BNRTowel *myTowel = [BNRTowel new];
+        [myTowel addObserver:nil
+                  forKeyPath:@"location"
+                     options:NSKeyValueObservingOptionNew
+                     context:NULL];
+        
         // Create an an array of dictionaires, where each dictionay
         // will end up holding the class name, hierarchy, and method lsit
         // for a given class
@@ -80,8 +89,10 @@ int main(int argc, const char * argv[]) {
             NSArray *methods = BNRMethodsForClass(currentClass);
             NSArray *ivars = BNRInstancesVariableForClass(currentClass);
             
+            NSString *classNameWithIndex = [NSString stringWithFormat:@"%@%d", className, i];
+            
             NSDictionary *classInfoDic = @{
-                                           @"className":className,
+                                           @"className":classNameWithIndex,
                                            @"hierarchy":hierarchy,
                                            @"methods":methods,
                                            @"ivars":ivars
