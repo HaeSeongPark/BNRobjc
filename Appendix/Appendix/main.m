@@ -10,6 +10,7 @@
 #import <objc/runtime.h>
 #import "BNRTowel.h"
 //https://forums.developer.apple.com/thread/63537
+//NSlog clip long dictionary's decription, so override to print no cliped verison
 #define NSLog(FORMAT, ...) printf("%s\n", [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
 
 NSArray *BNRHierarchyForClass(Class cls)
