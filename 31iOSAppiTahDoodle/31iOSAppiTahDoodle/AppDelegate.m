@@ -8,6 +8,12 @@
 
 #import "AppDelegate.h"
 
+static BOOL isRunningTests(void)
+{
+    NSLog(@"%@",[[NSProcessInfo processInfo] environment]);
+    return [[[[NSProcessInfo processInfo] environment][@"XCTestConfigurationFilePath"] pathExtension] isEqualToString:@"xctestconfiguration"];
+}
+
 @interface AppDelegate ()
 
 @end
@@ -18,6 +24,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    if(isRunningTests()){
+        NSLog(@"sdfsdf");
+    }
     return YES;
 }
 

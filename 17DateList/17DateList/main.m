@@ -90,7 +90,7 @@ int main(int argc, const char * argv[]) {
         }
         NSLog(@"matchedCount : %d", matchedCount);
         
-
+         NSLog(@"Storage size for long : %d \n", sizeof(long));
         
     }
     return 0;

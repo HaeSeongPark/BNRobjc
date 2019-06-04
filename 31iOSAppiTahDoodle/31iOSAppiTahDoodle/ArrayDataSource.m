@@ -22,6 +22,12 @@
 // 제네릭으로 만들면 좋을 듯
 @implementation ArrayDataSource
                      //제네릭
+
+- (instancetype)init
+{
+    return nil;
+}
+
 - (id)initWithItems:(NSArray *)anItems cellIdentifier:(NSString *)aCellIdentifier configureCellBlock:(TableViewCellConfigureBlock)aConfigureCellBlock
 {
     self = [super init];
